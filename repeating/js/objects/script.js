@@ -83,10 +83,10 @@ let newCalc = new CalcFunc
 // alert(newCalc.sum())
 
 function Accumulator(startValue) {
-    this.startValue = startValue
+    this.value = startValue
     this.read = () => {
-        this.startValue += Number(prompt("Введіть значення"))
-        alert(this.startValue)
+        this.value += Number(prompt("Введіть значення"))
+        alert(this.value)
     }
 }
 
