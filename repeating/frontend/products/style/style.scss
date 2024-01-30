@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .products {
+        display: grid;
+        margin: 10vh;
+        grid-template-columns: repeat(3, 33.3%);
+        column-gap: 10px;
+        row-gap: 10px;
+        .product-item {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            img {
+                width: 75%;
+            }
+            padding: 10px;
+            width: 30vw;
+            background-color: gray;
+            border-radius: 15px;
+            span {
+                color: white;
+                font-family: "Inter", sans-serif;
+            }
+            .title {
+                font-size: 1.5em;
+                margin-top: 10px;
+                font-weight: 600;
+            }
+            .description {
+                margin-top: 20px;
+                font-size: 1.25em;
+            }
+        }
+    }
+}
