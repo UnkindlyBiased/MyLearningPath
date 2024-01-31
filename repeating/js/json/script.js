@@ -11,3 +11,15 @@ document.getElementById('getElem').addEventListener('click', async () => {
     span.textContent = data.title
     document.body.appendChild(span)
 })
+
+function log(value) {
+    console.log(value)
+}
+
+log('start')
+
+setTimeout(() => {
+    log('timeout')
+}, 3000)
+
+log('end')
