@@ -4,13 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env node process/script.js"
+    "start": "cross-env node process/script.js",
+    "dev": "nodemon express/script.js"
   },
   "author": "",
+  "type": "module",
   "license": "ISC",
   "dependencies": {
     "cross-env": "^7.0.3",
     "dotenv": "^16.4.1",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "mongodb": "^6.3.0",
+    "mongoose": "^8.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
   }
 }
