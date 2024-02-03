@@ -1,3 +1,4 @@
+import UserModel from "../models/UserModel.js"
 import UserService from "../services/UserService.js"
 
 class UserController {
@@ -21,7 +22,10 @@ class UserController {
     async addUser(req, res) {
         try {
             const {userName, description} = req.body
-            const newUser = await UserService.addUser()
+            const newUser = await UserService.addUser(UserModel.build({
+                UserName: userName,
+                UserDesc: description
+            }))
             res.json(newUser)
         } catch(e) {
             res.json(e)

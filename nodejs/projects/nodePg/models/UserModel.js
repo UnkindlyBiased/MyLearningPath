@@ -11,13 +11,6 @@ const UserModel = pgSequelize.define('User', {
     }
 })
 
-const UserDto = (userName, description) => {
-    return {
-        userName,
-        description
-    }
-}
-
 UserModel.sync({alter: true})
 
 export default UserModel

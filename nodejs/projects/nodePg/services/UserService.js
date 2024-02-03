@@ -9,10 +9,10 @@ class UserService {
         const user = await UserModel.findByPk(id)
         return user
     }
-    async addUser(userDto) {
+    async addUser(user) {
         const newUser = await UserModel.create({
-            UserName: userDto.userName,
-            UserDesc: userDto.description
+            UserName: user.UserName,
+            UserDesc: user.UserDesc
         })
         return newUser
     }
