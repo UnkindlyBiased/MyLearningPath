@@ -4,7 +4,8 @@ import pgSequelize from '../sequelizeExp.js';
 const UserModel = pgSequelize.define('User', {
     UserName: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
     },
     UserDesc: {
         type: DataTypes.STRING
