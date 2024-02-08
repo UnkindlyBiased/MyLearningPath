@@ -1,0 +1,17 @@
+.divWrapper {
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(56, 54, 62);
+    margin: 1vh 0;
+    padding: 1.5vw;
+    border-radius: 15px;
+    cursor: pointer;
+    img {
+        width: 10%;
+    }
+    .infoWrapper {
+        text-align: start;
+        margin-left: 2vw;
+        width: 100%;
+    }
+}
