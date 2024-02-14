@@ -1,7 +1,5 @@
 import UserService from "../services/UserService";
 import { Request, Response } from "express";
-import jsonwebtoken from 'jsonwebtoken'
-import User from "../models/UserModel";
 
 class UserController {
     async getUsers(req: Request, res: Response) {
@@ -27,16 +25,27 @@ class UserController {
             name: req.body.userName,
             password: req.body.password
         }
-        if (await User.exists(user)) {
-            const token = jsonwebtoken.sign(user, process.env.TOKEN_CYPHER_KEY as string)
-            return res.json({ token : token })
+        const token = await UserService.generateToken(user)
+
+        if (!token) {
+            return res.clearCookie("accessToken")
+                .status(404).send({ message: "Error: I need to implement it" })
         }
-        return res.json({ message: "No user was found" })
+        return res.cookie(
+            "accessToken", token, {
+                httpOnly: true
+            }
+        ).status(200).json({ message: "Good work" })
     }
     async getUserByHisToken(req: Request, res: Response) {
-        const user = req.user
-        if (user) {
-            return res.json(user)
+        try {
+            const user = req.user
+            if (!user) {
+                res.status(404).send({ message: "No user was found" })
+            }
+            res.send(user)
+        } catch(e) {
+            res.status(400).send("Idk")
         }
     }
 }

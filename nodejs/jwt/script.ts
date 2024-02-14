@@ -1,12 +1,14 @@
 import express from 'express'
 import mongoData from './utils/DataSource'
-import UserRouter from './routes/UserRoutes'
+import UserRouter from './routes/UserRouter'
+import cookieparser from 'cookie-parser'
 
 require('dotenv').config()
 
 const app = express()
 
 app.use(express.json())
+app.use(cookieparser())
 app.use('/users', UserRouter)
 
 async function startApp() {

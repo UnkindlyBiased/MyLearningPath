@@ -1,15 +1,12 @@
 import { Request, Response, NextFunction } from 'express'
 import jwt from 'jsonwebtoken'
 
-export function authUser(req: Request, res: Response, next: NextFunction) {
-    const header = req.headers['authorization']
-    const token = header?.split(' ')[1]
+export function authUserMiddleware(req: Request, _res: Response, next: NextFunction) {
+    const tokenizedData = req.cookies.accessToken
 
-    jwt.verify(token as string, process.env.TOKEN_CYPHER_KEY as string, (err, user) => {
-        if (err) {
-            return res.status(403).json({ message : "No user was found" })
-        }
+    if (tokenizedData) {
+        const user = jwt.verify(tokenizedData.token, process.env.TOKEN_CYPHER_KEY as string)
         req.user = user
-        next()
-    })
-} 
+    }
+    next()
+}
